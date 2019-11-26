@@ -41,16 +41,16 @@ class Vec3 {
 
 
 
-  void normalize() {
+  void normalizeself() {
     float l = this.length();
     this.x/=l;
     this.y/=l;
     this.z/=l;
   }
 
-  Vec3 normalized() {
+  Vec3 normalize() {
     Vec3 v = new Vec3(this.x, this.y, this.z);
-    v.normalize();
+    v.normalizeself();
     return v;
   }
 

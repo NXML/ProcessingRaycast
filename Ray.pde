@@ -7,4 +7,8 @@ class Ray {
     this.origin= origin;
     this.dir=dir;
   }
+  
+  Vec3 point_at_parameter(float t){
+    return this.origin.add(this.dir.mult(t));
+  } 
 }

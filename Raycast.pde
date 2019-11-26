@@ -38,13 +38,15 @@ void draw() {
 
 
 Vec3 oColor(Ray r) {
-
-  if(sphere.is_hit(r)){
-    return new Vec3(1,0,0);
+  float t = sphere.is_hit(r);
+  if(t>0){
+    Vec3 N = r.point_at_parameter(t).rem(sphere.center).normalize();
+    return new Vec3(N.x+1,N.y+1,N.z+1).mult(0.5);
   }
   
-  Vec3 unit_dir = r.dir.normalized();
-  float t = 0.5*(unit_dir.y+1);
+  
+  Vec3 unit_dir = r.dir.normalize();
+   t = 0.5*(unit_dir.y+1);
   Vec3 a = new Vec3(1, 1, 1).mult(1-t);
   a = a.add(new Vec3(0.5, 0.7, 1.0).mult(t));
   return a;
